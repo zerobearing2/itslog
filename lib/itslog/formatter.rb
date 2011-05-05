@@ -4,7 +4,7 @@ module Itslog
     attr_accessor :namespace
 
     def namespace
-      @namespace ||= 'unknown'
+      @namespace ||= ''
     end
 
     def add_with_format(severity, message = nil, progname = nil, &block)
@@ -15,8 +15,9 @@ module Itslog
       msg = ''
       msg << colors[severity]
       msg << "#{time.split.first} " unless Rails.env.development? || Rails.env.test?
-      msg << "#{time.split.last} "
-      msg << "#{namespace}: "
+      msg << "#{time.split.last}"
+      msg << " #{namespace}" if namespace.present?
+      msg << ': '
       msg << colors[5]
       msg << message.to_s.strip
 
