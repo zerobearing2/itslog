@@ -33,7 +33,9 @@ module Itslog
 
     def call_with_namespace(message, *args)
       namespace = message.split('.').last if logger
-      logger.namespace = namespace.present? ? namespace : ''
+      if logger.respond_to?(:namespace=)
+        logger.namespace = namespace.present? ? namespace : ''
+      end
       call_without_namespace(message, *args)
     end
 
