@@ -9,19 +9,9 @@ Gem::Specification.new do |s|
   s.authors     = ['John Thomas Marino']
   s.email       = 'writejm@gmail.com'
   s.homepage    = 'http://github.com/johmas/itslog'
-  s.summary     = 'itslog makes logs more useful for rails development'
+  s.summary     = 'itslog makes logs more useful for rails 3 development.'
   s.description = %q{
-    `itslog` is a log formatter designed to aid rails development.
-
-    The formatting will prepend all log statements with a colored header and additional information about the statement.
-
-    [timestamp] [rails namespace]: [normal log], example:
-
-        15:16:32 action_view: Rendered layouts/_head.haml (8.5ms)
-
-    In addition to more readable logs you can tail and grep specific parts of your application. example:
-
-        tail -f log/development.log | grep active_record
+    `itslog` is a log formatter designed to aid rails 3 development.
   }
 
   s.rubyforge_project = 'itslog'
