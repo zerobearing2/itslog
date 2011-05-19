@@ -1,7 +1,7 @@
 module Itslog
   module BufferedLoggerExtension
-    include Itslog::Configure
     extend ActiveSupport::Concern
+    include Itslog::Configure
     attr_accessor :namespace
 
     def namespace
