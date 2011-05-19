@@ -4,7 +4,7 @@ module Itslog
     attr_accessor :format, :namespace_colors, :severity_colors, :color_by
 
     def color_by
-      @color_by ||= :severity
+      @color_by ||= :namespace
     end
 
     def format
