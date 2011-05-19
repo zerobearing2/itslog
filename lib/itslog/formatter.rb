@@ -11,15 +11,9 @@ module Itslog
     def add_with_format(severity, message = nil, progname = nil, &block)
       return if @level > severity
 
-      config = Itslog::Configure
-
-      format = config.format.dup
-      color  = color(namespace, severity)
-
       time    = Time.now.to_s(:db).split.last
       message = "\e[37m" + message.to_s.strip
-
-      msg = '' << color << format
+      msg     = '' << color(namespace, severity) << Itslog::Configure.format.dup
       {'%t' => time, '%n' => namespace, '%m' => message}.each do |k,v|
         msg.gsub! k, v if v.present?
       end
