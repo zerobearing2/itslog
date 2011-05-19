@@ -1,5 +1,17 @@
 module Itslog
+  module Configure
+    extend self
+    attr_accessor :format
+
+    def format
+      @format ||= '%t %n %m'
+    end
+  end
+end
+
+module Itslog
   module BufferedLoggerExtension
+    include Itslog::Configure
     extend ActiveSupport::Concern
     attr_accessor :namespace
 
@@ -9,19 +21,18 @@ module Itslog
 
     def add_with_format(severity, message = nil, progname = nil, &block)
       return if @level > severity
-      colors = ["\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
-      time   = Time.now.to_s(:db)
 
-      msg = ''
-      msg << colors[severity]
-      msg << "#{time.split.first} " unless Rails.env.development? || Rails.env.test?
-      msg << "#{time.split.last}"
-      msg << " #{namespace}" if namespace.present?
-      msg << ': '
-      msg << colors[5]
-      msg << message.to_s.strip
+      colors  = ["\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
+      time    = Time.now.to_s(:db).split.last
+      message = colors[5] + message.to_s.strip
 
-      add_without_format(severity, msg, progname, &block)
+      msg = colors[severity] << Itslog::Configure.format.dup
+      msg.gsub!("%t", time)
+      msg.gsub!("%n", namespace) if namespace.present?
+      msg.gsub!("%m", message)
+
+      add_without_format \
+        severity, msg, progname, &block
     end
 
     included do
