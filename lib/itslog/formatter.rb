@@ -22,9 +22,9 @@ module Itslog
       msg = ''
       msg << color if color.present?
       msg << format
-      msg.gsub!("%t", time)
-      msg.gsub!("%n", namespace) if namespace.present?
-      msg.gsub!("%m", message)
+      {'%t' => time, '%n' => namespace, '%m' => message}.each do |k,v|
+        msg.gsub! k, v if v.present?
+      end
 
       add_without_format severity, msg, progname, &block
     end
