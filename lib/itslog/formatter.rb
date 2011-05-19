@@ -19,9 +19,7 @@ module Itslog
       time    = Time.now.to_s(:db).split.last
       message = "\e[37m" + message.to_s.strip
 
-      msg = ''
-      msg << color if color.present?
-      msg << format
+      msg = '' << color << format
       {'%t' => time, '%n' => namespace, '%m' => message}.each do |k,v|
         msg.gsub! k, v if v.present?
       end
@@ -32,9 +30,9 @@ module Itslog
     def color(namespace, severity)
       color_by = Itslog::Configure.color_by
       if color_by == :severity || severity > 1
-        Itslog::Configure.severity_colors[severity]
+        Itslog::Configure.severity_colors[severity].presence || "\e[37m"
       elsif color_by == :namespace
-        Itslog::Configure.namespace_colors[namespace]
+        Itslog::Configure.namespace_colors[namespace].presence || "\e[37m"
       else
         raise 'itslog: configuration of color_by can only be :severity or :namespace'
       end
