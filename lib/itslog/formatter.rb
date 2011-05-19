@@ -36,7 +36,7 @@ module Itslog
       elsif color_by == :namespace
         Itslog::Configure.namespace_colors[namespace]
       else
-        raise 'color_by can only be :severity or :namespace'
+        raise 'itslog: configuration of color_by can only be :severity or :namespace'
       end
     end
 
