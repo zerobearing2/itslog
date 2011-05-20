@@ -31,5 +31,9 @@ module Itslog
         raise 'itslog: configuration of color_by can only be :severity or :namespace'
       end
     end
+
+    def configure
+      yield self
+    end
   end
 end
