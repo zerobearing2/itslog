@@ -3,7 +3,7 @@ itslog
 
 `itslog` is a log formatter designed to aid rails development.
 
-The formatting will prepend all log statements with a colored header and additional information about the statement.
+The formatting will prepend all log statements with a colored header and additional information about the statement. The information and structure of the new statements is customizable through configuration.
 
 [timestamp] [rails namespace] [log message], example:
 
