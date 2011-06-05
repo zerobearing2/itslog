@@ -24,9 +24,11 @@ Install
 
 Add to your Gemfile in Rails:
 
-    group :development, :test do
-      gem 'itslog'
-    end
+``` ruby
+group :development, :test do
+  gem 'itslog'
+end
+```
 
 Configure
 -----------
@@ -35,14 +37,16 @@ Itslog does not need to be configured unless you want to customize the output st
 
 Example:
 
-    Itslog.configure do |config|
-      config.namespace_colors = {
-        'action_controller' => "\e[32m",
-        'active_record'     => "\e[94m",
-        'action_view'       => "\e[36m"
-      }
-      config.format = "%t [%n]: %m"
-    end
+``` ruby
+Itslog.configure do |config|
+    config.namespace_colors = {
+      'action_controller' => "\e[32m",
+      'active_record'     => "\e[94m",
+      'action_view'       => "\e[36m"
+    }
+    config.format = "%t [%n]: %m"
+end
+```
 
 Configure format by building a string anyway you'd like and using the following variables:
 
@@ -52,11 +56,13 @@ Configure format by building a string anyway you'd like and using the following 
 
 I don't recommend coloring by severity because it's not very useful. To color by severity instead of the default of namespace:
 
-    Itslog.configure do |config|
-      config.color_by :severity
-      config.severity_colors = ["\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
-                                 # debug, info, warning, error, fatal, unknown
-    end
+``` ruby
+Itslog.configure do |config|
+  config.color_by :severity
+  # debug, info, warning, error, fatal, unknown
+  config.severity_colors = ["\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
+end
+```
 
 Place the configuration in an initializer:
 
