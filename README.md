@@ -37,7 +37,7 @@ Example:
         'active_record'     => "\e[94m",
         'action_view'       => "\e[36m"
       }
-      config.format = "Its log log log || %t [ %n ] %m \n by blamo"
+      config.format = "%t [%n]: %m"
     end
 
 Configure format by building a string anyway you'd like and using the following variables:
