@@ -7,7 +7,11 @@ The formatting will prepend all log statements with a colored header and additio
 
 [timestamp] [rails namespace] [log message], example:
 
-    15:16:32 action_view Rendered layouts/_head.haml (8.5ms)
+![](http://cdn.lts.cr/files/bf23b77669a77fb444b6/itslog_example1.jpg)
+
+Errors and warnings will also stand out, example:
+
+![](http://cdn.lts.cr/files/bf23b77669a77fb444b6/itslog_example2.jpg)
 
 In addition to more readable logs, you can tail and grep specific parts of your application. example:
 
