@@ -9,7 +9,7 @@ module Itslog
     end
 
     def add_with_format(severity, message = nil, progname = nil, &block)
-      return if @level > severity
+      return if @level > severity || message.nil?
 
       time    = Time.now.to_s(:db).split.last
       message = "\e[37m" + message.to_s.strip
