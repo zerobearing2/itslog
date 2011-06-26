@@ -25,6 +25,8 @@ module Itslog
         msg.gsub! k,v
       end
 
+      @namespace = ''
+
       add_without_format severity, msg, progname, &block
     end
 
