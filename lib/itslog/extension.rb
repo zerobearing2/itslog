@@ -51,3 +51,18 @@ module Itslog
     end
   end
 end
+
+if defined? Mongoid::Logger
+  class Mongoid::Logger
+    delegate :namespace=, to: :logger, :allow_nil => true
+  end
+
+  class Mongo::Connection
+    def log_operation_with_namespace(name, payload)
+      @logger.namespace = 'mongo' if @logger
+      log_operation_without_namespace(name, payload)
+    end
+
+    alias_method_chain :log_operation, :namespace
+  end
+end
