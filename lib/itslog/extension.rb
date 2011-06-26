@@ -13,7 +13,7 @@ module Itslog
 
       time    = Time.now.to_s(:db).split.last
       message = "\e[37m" + message.to_s.strip
-      msg     = ''
+      msg     = namespace.present? ? '' : "\n"
       msg     << Itslog::Configure.color(namespace, severity)
       msg     << Itslog::Configure.format.dup
       {'%t' => time, '%n' => namespace, '%m' => message}.each do |k,v|
