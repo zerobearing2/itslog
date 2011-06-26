@@ -16,8 +16,13 @@ module Itslog
       msg     = namespace.present? ? '' : "\n"
       msg     << Itslog::Configure.color(namespace, severity)
       msg     << Itslog::Configure.format.dup
-      {'%t' => time, '%n' => namespace, '%m' => message}.each do |k,v|
-        msg.gsub! k, v if v.present?
+
+      { '%t'  => time,
+        '%n_' => namespace.present? ? namespace + ' ' : namespace,
+        '%n'  => namespace,
+        '%m'  => message
+      }.each do |k,v|
+        msg.gsub! k,v
       end
 
       add_without_format severity, msg, progname, &block

@@ -8,7 +8,7 @@ module Itslog
     end
 
     def format
-      @format ||= '%t %n %m'
+      @format ||= '%t %n_%m'
     end
 
     def namespace_colors
