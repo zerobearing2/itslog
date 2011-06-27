@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
 
   s.files          = %w( README.md Rakefile LICENSE )
   s.files         += Dir.glob("lib/**/*")
-  s.files         += Dir.glob("bin/**/*")
 
   s.require_paths = ['lib']
 end
