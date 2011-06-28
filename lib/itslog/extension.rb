@@ -54,7 +54,7 @@ end
 
 if defined? Mongoid::Logger
   class Mongoid::Logger
-    delegate :namespace=, to: :logger, :allow_nil => true
+    delegate :namespace=, :to => :logger, :allow_nil => true
   end
 
   class Mongo::Connection
