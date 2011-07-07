@@ -46,6 +46,7 @@ Itslog.configure do |config|
       'action_view'       => "\e[36m"
     }
     config.format = "%t [%n]: %m"
+    config.message_color = "\e[37m"
 end
 ```
 

@@ -57,4 +57,17 @@ class ItslogTest < Test::Unit::TestCase
     assert_log "\n\e[37m[] \e[37mtest\n", 'test', 0
     assert_log "\e[32m[action_controller] \e[37mtest\n", 'test', 0, 'action_controller'
   end
+
+  def test_default_message_color
+    Itslog::Configure.reset
+    assert_log "\e[32m01:01:01 action_controller \e[37mtest\n", 'test', 0, 'action_controller'
+  end
+
+  def test_custom_message_color
+    Itslog::Configure.reset
+    Itslog.configure do |config|
+      config.message_color = 'black'
+    end
+    assert_log "\e[32m01:01:01 action_controller blacktest\n", 'test', 0, 'action_controller'
+  end
 end

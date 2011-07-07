@@ -12,7 +12,7 @@ module Itslog
       return if @level > severity || message.nil?
 
       time    = Time.now.to_s(:db).split.last
-      message = "\e[37m" + message.to_s.strip
+      message = Itslog::Configure.message_color + message.to_s.strip
       msg     = namespace.present? ? '' : "\n"
       msg     << Itslog::Configure.color(namespace, severity)
       msg     << Itslog::Configure.format.dup

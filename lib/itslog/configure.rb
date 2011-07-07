@@ -1,7 +1,7 @@
 module Itslog
   module Configure
     extend self
-    attr_accessor :format, :namespace_colors, :severity_colors, :color_by
+    attr_accessor :format, :namespace_colors, :severity_colors, :message_color, :color_by
 
     def color_by
       @color_by ||= :namespace
@@ -23,6 +23,10 @@ module Itslog
       @severity_colors ||= [ "\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
     end
 
+    def message_color
+      @message_color ||= "\e[37m"
+    end
+
     def color(namespace, severity)
       if self.color_by == :severity || severity > 1
         self.severity_colors[severity].presence || "\e[37m"
@@ -39,8 +43,9 @@ module Itslog
 
     def reset
       configure do |config|
-        config.color_by = :namespace
-        config.format   = '%t %n_%m'
+        config.color_by      = :namespace
+        config.format        = '%t %n_%m'
+        config.message_color = "\e[37m"
         config.namespace_colors = {
           'action_controller' => "\e[32m",
           'active_record'     => "\e[94m",
