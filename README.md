@@ -47,6 +47,7 @@ Itslog.configure do |config|
     }
     config.format = "%t [%n]: %m"
     config.message_color = "\e[37m"
+    config.timestamp_format = "%Y-%b-%d %H:%M:%S %z"
 end
 ```
 
@@ -55,6 +56,9 @@ Configure format by building a string anyway you'd like and using the following 
     %t (timestamp)
     %n (namespace)
     %m (log message)
+
+Configure the timestamp format by passing in a string to timestamp_format. For more info on what variables you can use
+refer [Date Time Format in RUBY](http://snippets.dzone.com/posts/show/2255)
 
 I don't recommend coloring by severity because it's not very useful. To color by severity instead of the default of namespace:
 

@@ -1,10 +1,14 @@
 module Itslog
   module Configure
     extend self
-    attr_accessor :format, :namespace_colors, :severity_colors, :message_color, :color_by
+    attr_accessor :format, :timestamp_format, :namespace_colors, :severity_colors, :message_color, :color_by
 
     def color_by
       @color_by ||= :namespace
+    end
+
+    def timestamp_format
+      @timestamp_format ||= "%Y-%b-%d %H:%M:%S %z"
     end
 
     def format

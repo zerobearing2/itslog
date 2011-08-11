@@ -11,7 +11,7 @@ module Itslog
     def add_with_format(severity, message = nil, progname = nil, &block)
       return if @level > severity || message.nil?
 
-      time    = Time.now.to_s(:db).split.last
+      time    = Time.now.strftime(Itslog::Configure.timestamp_format)
       message = Itslog::Configure.message_color + message.to_s.strip
       msg     = namespace.present? ? '' : "\n"
       msg     << Itslog::Configure.color(namespace, severity)
