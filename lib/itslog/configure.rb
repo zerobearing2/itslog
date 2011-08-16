@@ -7,10 +7,6 @@ module Itslog
       @color_by ||= :namespace
     end
 
-    def timestamp_format
-      @timestamp_format ||= "%Y-%b-%d %H:%M:%S %z"
-    end
-
     def format
       @format ||= '%t %n_%m'
     end
@@ -29,6 +25,10 @@ module Itslog
 
     def message_color
       @message_color ||= "\e[37m"
+    end
+
+    def timestamp_format
+      @timestamp_format ||= '%H:%M:%S'
     end
 
     def color(namespace, severity)
@@ -57,6 +57,7 @@ module Itslog
           'action_view'       => "\e[36m"}
         config.severity_colors = [
           "\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
+        config.timestamp_format = '%H:%M:%S'
       end
     end
   end

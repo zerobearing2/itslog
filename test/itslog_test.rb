@@ -70,4 +70,10 @@ class ItslogTest < Test::Unit::TestCase
     end
     assert_log "\e[32m01:01:01 action_controller blacktest\n", 'test', 0, 'action_controller'
   end
+
+  def test_custom_timestamp_format
+    Itslog::Configure.reset
+    Itslog.configure { |config| config.timestamp_format = '%m-%e-%y %H:%M' }
+    assert_log "\n\e[37m08-16-11 01:01 \e[37mtest\n", 'test', 0
+  end
 end

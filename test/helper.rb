@@ -15,7 +15,7 @@ Itslog::Railtie.insert
 
 def assert_log(log, msg, severity=0, namespace=nil)
   level = [:debug, :info, :warn, :error, :fatal, :unknown]
-  Timecop.freeze(Time.parse('01:01:01'))
+  Timecop.freeze(Time.parse('08/16/11 01:01:01'))
   file_name    = File.dirname(__FILE__) + '/fixtures/log.txt'
   File.delete(file_name)
   Rails.logger = ActiveSupport::BufferedLogger.new(file_name)
