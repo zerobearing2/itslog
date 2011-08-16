@@ -33,7 +33,7 @@ end
 Configure
 -----------
 
-Itslog does not need to be configured unless you want to customize the output structure and color. 
+Itslog does not need to be configured unless you want to customize the output structure and color.
 
 Example:
 
@@ -57,8 +57,7 @@ Configure format by building a string anyway you'd like and using the following 
     %n (namespace)
     %m (log message)
 
-Configure the timestamp format by passing in a string to timestamp_format. For more info on what variables you can use
-refer [Date Time Format in RUBY](http://snippets.dzone.com/posts/show/2255)
+Configure time format using a strftime format string. [foragoodstrftime](http://www.foragoodstrftime.com/) is a nice reference.
 
 I don't recommend coloring by severity because it's not very useful. To color by severity instead of the default of namespace:
 
