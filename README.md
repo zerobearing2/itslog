@@ -38,7 +38,9 @@ Itslog does not need to be configured unless you want to customize the output st
 Example:
 
 ``` ruby
-Itslog.configure do |config|
+if Rails.env.development? || Rails.env.test?
+
+  Itslog.configure do |config|
     config.namespace_colors = {
       'action_controller' => "\e[32m",
       'active_record'     => "\e[94m",
@@ -48,6 +50,8 @@ Itslog.configure do |config|
     config.format = "%t [%n]: %m"
     config.message_color = "\e[37m"
     config.timestamp_format = "%Y-%b-%d %H:%M:%S %z"
+  end
+
 end
 ```
 
@@ -62,10 +66,14 @@ Configure time format using a strftime format string. [foragoodstrftime](http://
 I don't recommend coloring by severity because it's not very useful. To color by severity instead of the default of namespace:
 
 ``` ruby
-Itslog.configure do |config|
-  config.color_by :severity
-  # debug, info, warning, error, fatal, unknown
-  config.severity_colors = ["\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
+if Rails.env.development? || Rails.env.test?
+
+  Itslog.configure do |config|
+    config.color_by :severity
+    # debug, info, warning, error, fatal, unknown
+    config.severity_colors = ["\e[36m","\e[32m","\e[33m","\e[31m","\e[31m","\e[37m"]
+  end
+
 end
 ```
 
