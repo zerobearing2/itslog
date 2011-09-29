@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['John Thomas Marino']
   s.email       = 'writejm@gmail.com'
-  s.homepage    = 'http://github.com/johmas/itslog'
+  s.homepage    = 'http://github.com/johnnytommy/itslog'
   s.summary     = 'itslog makes logs more useful for rails 3 development.'
   s.description = %q{
     `itslog` is a log formatter designed to aid rails 3 development.
