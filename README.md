@@ -17,7 +17,7 @@ In addition to more readable logs, you can tail and grep specific parts of your 
 
     tail -f log/development.log | grep active_record
 
-Use itslog in conjunction with [axe](http://github.com/johmas/axe) for faster access to your logs.
+Use itslog in conjunction with [axe](https://github.com/johnnytommy/axe) for faster access to your logs.
 
 Install
 -------
