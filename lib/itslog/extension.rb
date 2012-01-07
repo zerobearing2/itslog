@@ -55,6 +55,11 @@ end
 if defined? Mongoid::Logger
   class Mongoid::Logger
     delegate :namespace=, :to => :logger, :allow_nil => true
+    
+    def logger
+      Mongoid.logger.namespace = 'mongo' if Mongoid.logger
+      Mongoid.logger
+    end
   end
 
   class Mongo::Connection
@@ -62,7 +67,7 @@ if defined? Mongoid::Logger
       @logger.namespace = 'mongo' if @logger
       log_operation_without_namespace(name, payload)
     end
-
+  
     alias_method_chain :log_operation, :namespace
   end
 end
